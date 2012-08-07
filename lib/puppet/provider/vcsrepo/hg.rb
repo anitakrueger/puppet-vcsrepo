@@ -30,10 +30,7 @@ Puppet::Type.type(:vcsrepo).provide(:hg, :parent => Puppet::Provider::Vcsrepo) d
 
   def latest?
     at_path do
-      if self.revision == self.latest
-        hg('pull')
-        hg('update', '--clean')
-      end
+      return self.revision == self.latest
     end
   end
 
